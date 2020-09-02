@@ -161,9 +161,7 @@ I would like to do the following alongside others who want to work with EKS infr
 - Add nginx ingress controller
 - Add skipper ingress controller
 
-If anyone wants to pick up any work here, feel free to open a branch; if you want to contact me personally about this
-
-Email: hamade@live.com
+If anyone wants to pick up any work here, feel free to open a branch or a ticket from issues tab
 
 <!--BEGIN:terraform-docs-->
 ## Requirements
