@@ -88,10 +88,9 @@ module "eks_config" {
     }
   }
 
-  # This service is required if you want to install twistlock as well
   efs_provisioner = {
     version    = "0.13.0"
-    fs_id      = module.efs_endpoints.efs_id
+    fs_id      = var.efs_id
     extra_sets = {
       "image.tag" : "v2.4.0"
     }
@@ -99,7 +98,7 @@ module "eks_config" {
 
   aws_fluent_bit = {
     version             = "0.1.3"
-    kinesis_stream_name = module.logging_kinesis.kinesis_stream_name
+    kinesis_stream_name = var.kinesis_stream_name
     extra_sets = {
       "image.tag" : "2.6.1"
     }
@@ -122,7 +121,7 @@ module "eks_config" {
 
   external_dns = {
     version          = "3.3.0"
-    route53_zone_ids = [module.route53_env.public_domain_zone_id]
+    route53_zone_ids = [var.public_domain_zone_id]
     extra_sets = {
       "image.tag" : "0.7.3"
     }
@@ -147,7 +146,7 @@ module "eks_config" {
 
   newrelic = {
     version     = "1.6.0"
-    license_key = module.secret_newrelic_license_key.ssm_parameter_value
+    license_key = var.secret_newrelic_license_key
     extra_sets  = null
   }
 }
