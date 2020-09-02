@@ -15,8 +15,6 @@ jobs:
 
     - name: Perform ShiftLeft Scan
       uses: ShiftLeftSecurity/scan-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         output: reports
         type: credscan,python,terraform,yaml,bash,depscan
