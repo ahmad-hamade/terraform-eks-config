@@ -2,7 +2,7 @@
 
 ![code-check](https://github.com/ahmad-hamade/eks-services/workflows/code-check/badge.svg)
 ![security-check](https://github.com/ahmad-hamade/eks-services/workflows/security-check/badge.svg)
-![Terraform](https://img.shields.io/badge/Terraform=>v0.12.29-blue.svg)
+![Terraform](https://img.shields.io/badge/Terraform->=v0.12.0-blue.svg)
 
 ## Overview
 
