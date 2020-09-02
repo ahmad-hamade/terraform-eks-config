@@ -19,7 +19,3 @@ jobs:
         output: reports
         type: credscan,python,terraform,yaml,bash,depscan
 
-    - name: Upload report
-      uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: reports
