@@ -162,7 +162,7 @@ I would like to do the following alongside others who want to work with EKS infr
 
 If anyone wants to pick up any work here, feel free to open a branch; if you want to contact me personally about this
 
-Email: a.hamade@live.com
+Email: hamade@live.com
 
 <!--BEGIN:terraform-docs-->
 ## Requirements
