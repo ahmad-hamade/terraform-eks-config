@@ -18,4 +18,3 @@ jobs:
       with:
         output: reports
         type: credscan,python,terraform,yaml,bash,depscan
-
