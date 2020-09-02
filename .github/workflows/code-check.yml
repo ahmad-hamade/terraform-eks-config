@@ -1,0 +1,23 @@
+name: code-check
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches: [master]
+
+jobs:
+  code-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+      - name: Install Dependencies
+        run: |
+          sudo apt install python3-pip gawk &&\
+          echo 'pre-commit'
+          curl -L "$(curl -sL https://api.github.com/repos/segmentio/terraform-docs/releases/latest | grep -o -E "https://.+?-linux-amd64")" > terraform-docs && chmod +x terraform-docs && sudo mv terraform-docs /usr/bin/
+          curl -L "$(curl -sL https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" > tflint.zip && unzip tflint.zip && rm tflint.zip && sudo mv tflint /usr/bin/
+          curl -L "$(curl -sL https://api.github.com/repos/liamg/tfsec/releases/latest | grep -o -E "https://.+?-linux-amd64")" > tfsec && chmod +x tfsec && sudo mv tfsec /usr/bin/
+      - uses: pre-commit/action@v2.0.0

@@ -101,4 +101,3 @@ output "aws_efs_csi_driver" {
     chart_version = var.aws_efs_csi_driver != null ? helm_release.aws_efs_csi_driver[0].version : null
   }
 }
-

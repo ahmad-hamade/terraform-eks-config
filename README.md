@@ -1,5 +1,7 @@
 # EKS Services
 
+![Terraform](https://img.shields.io/badge/Terraform=>v0.12.0-blue.svg)
+
 ## Overview
 
 This module made the following services setup in EKS easier and adjustable:
@@ -20,9 +22,9 @@ This module made the following services setup in EKS easier and adjustable:
 | [newrelic](https://github.com/newrelic/helm-charts/tree/master/charts/nri-bundle) | NewRelic monitoring integration. |
 | [external-dns](https://github.com/bitnami/charts/tree/master/bitnami/external-dns) | Automatically provision Route53 records for ingress resources. |
 | [aws-efs-csi-driver](https://github.com/Kubernetes-sigs/aws-efs-csi-driver/tree/master/helm) | The Amazon Elastic File System Container Storage Interface (CSI) Driver. |
-| [aws-fluent-bit](https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit) | Log collection that supports shipping to AWS Kinesis, compatible with the Elsevier logging platform. |
+| [aws-fluent-bit](https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit) | Log collection that supports shipping to AWS Kinesis, ES and CW. |
 
-> ⚠️ **Note!**  
+> ⚠️ **Note!**
 >
 > It's recommended always to set a specific chart version for every service and don't use `null` as a value in variable `version` to avoid using the `latest` version that might not be stable or compatible with your EKS cluster.
 >
@@ -160,7 +162,7 @@ I would like to do the following alongside others who want to work with EKS infr
 
 If anyone wants to pick up any work here, feel free to open a branch; if you want to contact me personally about this
 
-Email: a.hamade@elsevier.com
+Email: a.hamade@live.com
 
 <!--BEGIN:terraform-docs-->
 ## Requirements
