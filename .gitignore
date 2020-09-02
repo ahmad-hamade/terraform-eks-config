@@ -1,0 +1,28 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+*.tfplan
+crash.log
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# OS X
+.history
+.DS_Store
+
+# IntelliJ
+.idea_modules
+*.iml
+*.iws
+*.ipr
+.idea
+build/
+*/build/
+out/
+
+# VSCode
+.vscode/
