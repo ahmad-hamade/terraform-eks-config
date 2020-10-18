@@ -2,7 +2,8 @@
 
 ![code-check](https://github.com/ahmad-hamade/eks-services/workflows/code-check/badge.svg)
 ![security-check](https://github.com/ahmad-hamade/eks-services/workflows/security-check/badge.svg)
-![Terraform](https://img.shields.io/badge/Terraform->=v0.12.0-blue.svg)
+![Terraform](https://img.shields.io/badge/Terraform->=v0.12.6-blue.svg)
+ [![Latest Release](https://img.shields.io/github/release/ahmad-hamade/terraform-eks-config.svg)](https://github.com/ahmad-hamade/terraform-eks-config/releases/latest)
 
 ## Overview
 
@@ -142,6 +143,12 @@ module "eks_config" {
     license_key = module.secret_newrelic_license_key.ssm_parameter_value
     extra_sets  = null
   }
+
+  tags = {
+    Terraform = "true"
+    Environment = "dev"
+  }
+}
 ```
 
 You can also install `kube2iam` and `efs-provisioner` (Not recommended) using the following variables:
@@ -174,12 +181,12 @@ I would like to do the following alongside others who want to work with EKS infr
 
 If anyone wants to pick up any work here, feel free to open a branch or a ticket from issues tab
 
-<!--BEGIN:terraform-docs-->
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
+| terraform | >= 0.12.0, < 0.14.0 |
 | aws | >= 2.70 |
 | helm | >= 1.2 |
 | kubernetes | >= 1.11 |
@@ -198,7 +205,6 @@ If anyone wants to pick up any work here, feel free to open a branch or a ticket
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cluster\_name | EKS Cluster name to install the services | `string` | n/a | yes |
 | aws\_alb\_ingress\_controller | ALB ingress configuration | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
 | aws\_auth | AWS configuration for cluster authentication | <pre>object({<br>    nodes_role_arn  = string<br>    admin_iam_roles = list(string)<br>  })</pre> | `null` | no |
 | aws\_efs\_csi\_driver | Amazon Elastic File System Container Storage Interface (CSI) Driver | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
@@ -206,6 +212,7 @@ If anyone wants to pick up any work here, feel free to open a branch or a ticket
 | aws\_node\_termination\_handler | AWS Node Termination Handler | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
 | aws\_vpc\_cni | Installs the AWS CNI Daemonset | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
 | cluster\_autoscaler | Cluster autoscaler configuration | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
+| cluster\_name | EKS Cluster name to install the services | `string` | n/a | yes |
 | efs\_provisioner | EFS Provisioner | <pre>object({<br>    version    = string<br>    fs_id      = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
 | external\_dns | Configures public DNS servers with information about exposed Kubernetes services | <pre>object({<br>    version          = string<br>    route53_zone_ids = list(string)<br>    extra_sets       = map(string)<br>  })</pre> | `null` | no |
 | kube2iam | kube2iam | <pre>object({<br>    version    = string<br>    extra_sets = map(string)<br>  })</pre> | `null` | no |
@@ -236,4 +243,12 @@ If anyone wants to pick up any work here, feel free to open a branch or a ticket
 | newrelic | NewRelic |
 | node\_problem\_detector | Nod Problem Detector |
 
-<!--END:terraform-docs-->
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Authors
+
+Module is maintained by [Ahmad Hamade](https://github.com/ahmad-hamade) with help from [these awesome contributors](https://github.com/ahmad-hamade/terraform-eks-config/graphs/contributors).
+
+## License
+
+Apache 2 Licensed. See LICENSE for full details.

@@ -1,5 +1,5 @@
 module "aws_vpc_cni" {
-  source           = "./eks-iam-role//"
+  source           = "./modules/eks-iam-role"
   enable           = var.aws_vpc_cni != null
   cluster_name     = local.cluster_name
   role_name        = "aws-vpc-cni"

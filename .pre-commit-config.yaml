@@ -18,9 +18,8 @@ repos:
       - id: pretty-format-json
         args: [--autofix, --no-sort-keys]
   - repo: git://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.35.0
+    rev: v1.43.0
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
-      - id: terraform_docs_without_aggregate_type_defaults
       - id: terraform_tflint

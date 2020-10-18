@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
 }
 
 module "cluster_autoscaler" {
-  source           = "./eks-iam-role//"
+  source           = "./modules/eks-iam-role"
   enable           = var.cluster_autoscaler != null
   cluster_name     = local.cluster_name
   role_name        = "cluster-autoscaler"
