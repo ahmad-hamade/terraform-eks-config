@@ -5,13 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/1.1.0...master)
-* Publishing the repo in terraform modules registry
+## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/2.0.0...master)
 
 <!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
 <!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
 <!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->
 <!--CHANGELOG: For more information please read https://keepachangelog.com/en/1.0.0/ -->
+
+## [2.0.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/1.1.0...2.0.0) - (2020 October 18)
+
+* Publishing the repo in terraform modules registry
 
 ## [1.1.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/1.0.0...1.1.0) - (2020 October 18)
 
