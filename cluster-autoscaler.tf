@@ -29,8 +29,8 @@ module "cluster_autoscaler" {
 resource "helm_release" "cluster_autoscaler" {
   count           = var.cluster_autoscaler != null ? 1 : 0
   name            = "cluster-autoscaler"
-  repository      = local.charts_stable_repo
-  chart           = "cluster-autoscaler"
+  repository      = local.charts_autoscaler_repo
+  chart           = "cluster-autoscaler-chart"
   namespace       = "kube-system"
   version         = var.cluster_autoscaler.version
   cleanup_on_fail = true
@@ -49,6 +49,11 @@ resource "helm_release" "cluster_autoscaler" {
 
   set {
     name  = "rbac.create"
+    value = "true"
+  }
+
+  set {
+    name  = "rbac.serviceAccount.create"
     value = "true"
   }
 
@@ -83,7 +88,7 @@ resource "helm_release" "cluster_autoscaler" {
   }
 
   set {
-    name  = "rbac.serviceAccountAnnotations.eks\\.amazonaws\\.com/role-arn"
+    name  = "rbac.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = module.cluster_autoscaler.iam_role_arn
   }
 

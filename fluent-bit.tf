@@ -63,6 +63,11 @@ resource "helm_release" "aws_fluent_bit" {
   }
 
   set {
+    name  = "elasticsearch.enabled"
+    value = "false"
+  }
+
+  set {
     name  = "kinesis.enabled"
     value = "true"
   }

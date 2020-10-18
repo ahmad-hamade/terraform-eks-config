@@ -41,7 +41,7 @@ Import the module and retrieve it with `terraform get` .
 
 ```terraform
 module "eks_config" {
-  source = "git::ssh://git@github.com/ahmad-hamade/eks-services.git?ref=TAG"
+  source = "git@github.com:ahmad-hamade/eks-services.git//.?ref=TAG"
 
   cluster_name = var.cluster_name
 
@@ -53,16 +53,10 @@ module "eks_config" {
   # Make sure to delete the existing VPC CNI resources by running the below command before installing this service:
   # kubectl delete -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/release-1.6/config/v1.6/aws-k8s-cni.yaml
   aws_vpc_cni = {
-    version    = "1.0.9"
+    version    = "1.1.0"
     extra_sets = {
-      "image.tag" : "v1.6.3"
-    }
-  }
-
-  kube2iam = {
-    version    = "2.5.1"
-    extra_sets = {
-      "image.tag" : "0.10.10"
+      "init.image.tag" : "v1.7.4"
+      "image.tag" : "v1.7.4"
     }
   }
 
@@ -73,34 +67,34 @@ module "eks_config" {
     }
   }
 
-  # Consider installing this service if you only have spot instances running in your cluster
   aws_node_termination_handler = {
-    version = "0.9.5"
+    version = "0.10.0"
     extra_sets = {
-      "image.tag" : "v1.7.0"
+      "image.tag" : "v1.8.0"
     }
   }
 
   node_problem_detector = {
-    version = "1.7.6"
+    version = "1.8.0"
     extra_sets = {
-      "image.tag" : "v0.8.2"
+      "image.repository" : "k8s.gcr.io/node-problem-detector/node-problem-detector"
+      "image.tag" : "v0.8.4"
     }
   }
 
-  efs_provisioner = {
-    version    = "0.13.0"
-    fs_id      = var.efs_id
+
+  aws_efs_csi_driver = {
+    version = "0.1.0"
     extra_sets = {
-      "image.tag" : "v2.4.0"
+      "image.tag" : "v1.0.0"
     }
   }
 
   aws_fluent_bit = {
     version             = "0.1.3"
-    kinesis_stream_name = var.kinesis_stream_name
+    kinesis_stream_name = module.logging_kinesis.kinesis_stream_name
     extra_sets = {
-      "image.tag" : "2.6.1"
+      "image.tag" : "2.8.0"
     }
   }
 
@@ -108,36 +102,35 @@ module "eks_config" {
   kube_downscaler = {
     version = "0.5.0"
     extra_sets = {
-      "image.tag" : "20.5.0"
+      "image.tag" : "20.10.0"
     }
   }
 
   kube_state_metrics = {
-    version = "2.8.14"
+    version = "2.9.1"
     extra_sets = {
       "image.tag" : "v1.9.7"
     }
   }
 
   external_dns = {
-    version          = "3.3.0"
-    route53_zone_ids = [var.public_domain_zone_id]
+    version          = "3.4.6"
+    route53_zone_ids = [module.route53_env.public_domain_zone_id]
     extra_sets = {
-      "image.tag" : "0.7.3"
+      "image.tag" : "0.7.4"
     }
   }
 
   metrics_server = {
-    version = "2.11.1"
+    version = "2.11.2"
     extra_sets = {
       "image.repository" : "k8s.gcr.io/metrics-server/metrics-server"
       "image.tag" : "v0.3.7"
     }
   }
 
-  # Make sure the image.tag is matching your cluster version
   cluster_autoscaler = {
-    version = "7.3.4"
+    version = "1.1.0"
     extra_sets = {
       "image.repository" : "k8s.gcr.io/autoscaling/cluster-autoscaler"
       "image.tag" : "v1.17.3"
@@ -145,9 +138,27 @@ module "eks_config" {
   }
 
   newrelic = {
-    version     = "1.6.0"
-    license_key = var.secret_newrelic_license_key
+    version     = "1.9.0"
+    license_key = module.secret_newrelic_license_key.ssm_parameter_value
     extra_sets  = null
+  }
+```
+
+You can also install `kube2iam` and `efs-provisioner` (Not recommended) using the following variables:
+
+```terraform
+kube2iam = {
+  version    = "2.5.1"
+  extra_sets = {
+    "image.tag" : "0.10.11"
+  }
+}
+
+efs_provisioner = {
+  version    = "0.13.0"
+  fs_id      = module.efs_endpoints.efs_id
+  extra_sets = {
+    "image.tag" : "v2.4.0"
   }
 }
 ```

@@ -35,7 +35,7 @@ resource "helm_release" "newrelic" {
     value = "false"
   }
 
-  set {
+  set_sensitive {
     name  = "global.licenseKey"
     value = var.newrelic.license_key
   }

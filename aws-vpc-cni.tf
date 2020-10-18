@@ -41,6 +41,11 @@ resource "helm_release" "aws_vpc_cni" {
   }
 
   set {
+    name  = "init.image.region"
+    value = data.aws_region.current.name
+  }
+
+  set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
     value = module.aws_vpc_cni.iam_role_arn
   }
