@@ -2,6 +2,7 @@
 
 - [ ] Existing service
 - [ ] New service
+- [ ] Other
 
 ## Type of change
 
