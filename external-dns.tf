@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "external_dns" {
 }
 
 module "external_dns" {
-  source           = "./eks-iam-role//"
+  source           = "./modules/eks-iam-role"
   enable           = var.external_dns != null
   cluster_name     = local.cluster_name
   role_name        = "external-dns"
