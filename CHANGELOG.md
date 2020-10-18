@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->
 <!--CHANGELOG: For more information please read https://keepachangelog.com/en/1.0.0/ -->
 
-## [1.1.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/1.0.0...1.1.0)
+## [1.1.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/1.0.0...1.1.0) - (2020 October 18)
 
 * Enfore running `aws_node_termination_handler` in all EC2 instances
 * Set the correct region name in `aws_vpc_cni` for the init image
