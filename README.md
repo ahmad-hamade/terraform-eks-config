@@ -1,7 +1,7 @@
 # EKS Services
 
-![code-check](https://github.com/ahmad-hamade/eks-services/workflows/code-check/badge.svg)
-![security-check](https://github.com/ahmad-hamade/eks-services/workflows/security-check/badge.svg)
+![code-check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/code-check/badge.svg)
+![security-check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/security-check/badge.svg)
 ![Terraform](https://img.shields.io/badge/Terraform->=v0.12.6-blue.svg)
  [![Latest Release](https://img.shields.io/github/release/ahmad-hamade/terraform-eks-config.svg)](https://github.com/ahmad-hamade/terraform-eks-config/releases/latest)
 
@@ -42,7 +42,7 @@ Import the module and retrieve it with `terraform get` .
 
 ```terraform
 module "eks_config" {
-  source = "git@github.com:ahmad-hamade/eks-services.git//.?ref=TAG"
+  source = "git@github.com:ahmad-hamade/terraform-eks-config.git//.?ref=TAG"
 
   cluster_name = var.cluster_name
 

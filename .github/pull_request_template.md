@@ -1,6 +1,6 @@
 ## Your changes affecting
 
-- [ ] Exsiitng service
+- [ ] Existing service
 - [ ] New service
 
 ## Type of change
