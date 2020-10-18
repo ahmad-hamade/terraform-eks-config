@@ -3,7 +3,7 @@
 ![code-check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/code-check/badge.svg)
 ![security-check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/security-check/badge.svg)
 ![Terraform](https://img.shields.io/badge/Terraform->=v0.12.6-blue.svg)
- [![Latest Release](https://img.shields.io/github/release/ahmad-hamade/terraform-eks-config.svg)](https://github.com/ahmad-hamade/terraform-eks-config/releases/latest)
+![![Latest Release](https://img.shields.io/github/release/ahmad-hamade/terraform-eks-config.svg)](https://github.com/ahmad-hamade/terraform-eks-config/releases/latest)
 
 ## Overview
 
