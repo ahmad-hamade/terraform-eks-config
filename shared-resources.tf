@@ -10,7 +10,7 @@ locals {
 
   tags_map = merge(
     {
-      ManagedBy = "EKS-Config-Module"
+      ManagedBy = "EKS-Config-Module:1.1.0"
     },
     var.extra_tags,
   )
