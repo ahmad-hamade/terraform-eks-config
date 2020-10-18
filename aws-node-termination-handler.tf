@@ -15,11 +15,6 @@ resource "helm_release" "aws_node_termination_handler" {
   }
 
   set {
-    name  = "nodeSelector.lifecycle"
-    value = "Ec2Spot"
-  }
-
-  set {
     name  = "enableScheduledEventDraining"
     value = "true"
   }

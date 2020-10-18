@@ -1,15 +1,16 @@
 locals {
   cluster_name = data.aws_eks_cluster.cluster.id
 
-  charts_incubator_repo = "http://storage.googleapis.com/kubernetes-charts-incubator"
-  charts_stable_repo    = "https://kubernetes-charts.storage.googleapis.com"
-  charts_newrelic_repo  = "https://helm-charts.newrelic.com"
-  charts_bitnami_repo   = "https://charts.bitnami.com/bitnami"
-  charts_aws_repo       = "https://aws.github.io/eks-charts"
+  charts_incubator_repo  = "http://storage.googleapis.com/kubernetes-charts-incubator"
+  charts_stable_repo     = "https://kubernetes-charts.storage.googleapis.com"
+  charts_newrelic_repo   = "https://helm-charts.newrelic.com"
+  charts_bitnami_repo    = "https://charts.bitnami.com/bitnami"
+  charts_aws_repo        = "https://aws.github.io/eks-charts"
+  charts_autoscaler_repo = "https://kubernetes.github.io/autoscaler"
 
   tags_map = merge(
     {
-      ManagedBy = "EKS-Config-Module"
+      ManagedBy = "EKS-Config-Module:1.1.0"
     },
     var.extra_tags,
   )
