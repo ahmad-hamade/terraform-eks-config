@@ -41,15 +41,13 @@ data "aws_iam_policy_document" "policy_document" {
 
 resource "aws_iam_role" "role" {
   count              = var.enable ? 1 : 0
-  name               = "${var.cluster_name}-${var.role_name}"
+  name               = format("%s-%s", var.cluster_name, var.role_name)
   assume_role_policy = data.aws_iam_policy_document.policy_document.json
 
   tags = merge(
     var.tags,
     {
-      Name                                             = "${var.cluster_name}-${var.role_name}"
-      "kubernetes.io/cluster/${var.cluster_name}"      = "owned"
-      "kubernetes.io/cluster/${var.cluster_name}/role" = "enabled"
+      Name = format("%s-%s", var.cluster_name, var.role_name)
     }
   )
 }

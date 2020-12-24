@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
 }
 
 module "cluster_autoscaler" {
-  source           = "./modules/eks-iam-role"
+  source           = "./modules/eks-iam-role//"
   enable           = var.cluster_autoscaler != null
   cluster_name     = local.cluster_name
   role_name        = "cluster-autoscaler"
@@ -30,7 +30,7 @@ resource "helm_release" "cluster_autoscaler" {
   count           = var.cluster_autoscaler != null ? 1 : 0
   name            = "cluster-autoscaler"
   repository      = local.charts_autoscaler_repo
-  chart           = "cluster-autoscaler-chart"
+  chart           = "cluster-autoscaler"
   namespace       = "kube-system"
   version         = var.cluster_autoscaler.version
   cleanup_on_fail = true

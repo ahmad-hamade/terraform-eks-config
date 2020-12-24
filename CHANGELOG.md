@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/2.0.0...master)
 
+* Removed `aws-auth-config` and `newrelic` services
+* Update `cluster-autoscaler` chart repo
+* Migrate `stable` and `incubator` helm repos to a new repo
+* Migrate `node-problem-detector` to new chart repo
+* Removed `load_config_file` from helm provider
+* Removed unused tags from IAM roles
+
 <!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
 <!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
 <!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->
