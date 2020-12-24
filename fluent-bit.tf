@@ -27,7 +27,7 @@ data "aws_iam_policy_document" "aws_fluent_bit" {
 }
 
 module "aws_fluent_bit" {
-  source           = "./modules/eks-iam-role"
+  source           = "./modules/eks-iam-role//"
   enable           = var.aws_fluent_bit != null
   cluster_name     = local.cluster_name
   role_name        = "aws-fluent-bit"

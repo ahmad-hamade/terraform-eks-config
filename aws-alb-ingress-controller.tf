@@ -167,7 +167,7 @@ data "aws_iam_policy_document" "alb_ingress" {
 }
 
 module "alb_ingress" {
-  source           = "./modules/eks-iam-role"
+  source           = "./modules/eks-iam-role//"
   enable           = var.aws_alb_ingress_controller != null
   cluster_name     = local.cluster_name
   role_name        = "alb-ingress"

@@ -17,15 +17,6 @@ variable "priority_class_mames" {
   }
 }
 
-variable "aws_auth" {
-  description = "AWS configuration for cluster authentication"
-  type = object({
-    nodes_role_arn  = string
-    admin_iam_roles = list(string)
-  })
-  default = null
-}
-
 variable "aws_vpc_cni" {
   description = "Installs the AWS CNI Daemonset"
   type = object({
@@ -113,16 +104,6 @@ variable "efs_provisioner" {
     version    = string
     fs_id      = string
     extra_sets = map(string)
-  })
-  default = null
-}
-
-variable "newrelic" {
-  description = "Newrelic nri-bundle"
-  type = object({
-    version     = string
-    license_key = string
-    extra_sets  = map(string)
   })
   default = null
 }

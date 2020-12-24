@@ -64,13 +64,6 @@ output "efs_provisioner" {
   }
 }
 
-output "newrelic" {
-  description = "NewRelic"
-  value = {
-    chart_version = var.newrelic != null ? helm_release.newrelic[0].version : null
-  }
-}
-
 output "external_dns" {
   description = "External DNS"
   value = {

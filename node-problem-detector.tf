@@ -1,7 +1,7 @@
 resource "helm_release" "node_problem_detector" {
   count           = var.node_problem_detector != null ? 1 : 0
   name            = "node-problem-detector"
-  repository      = local.charts_stable_repo
+  repository      = "https://charts.deliveryhero.io/"
   chart           = "node-problem-detector"
   namespace       = "kube-system"
   version         = var.node_problem_detector.version
