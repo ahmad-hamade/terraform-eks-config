@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Migrate `node-problem-detector` to new chart repo
 * Removed `load_config_file` from helm provider
 * Removed unused tags from IAM roles
+* Fixed `code-check` workflow
 
 <!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
 <!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
