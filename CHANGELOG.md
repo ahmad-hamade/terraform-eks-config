@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.0.0...master)
 
+* Rename submodule `eks-iam-role` to `eks-iam-role-with-oidc`
+* Add required terraform and providers versions in submodul `eks-iam-role`
+* Add README file to `eks-iam-role` submodul
+* Remove the default tag key `ManagedBy` from the module
+
 <!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
 <!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
 <!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->

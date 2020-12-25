@@ -1,11 +1,11 @@
 module "aws_vpc_cni" {
-  source           = "./modules/eks-iam-role//"
+  source           = "./modules/eks-iam-role-with-oidc//"
   enable           = var.aws_vpc_cni != null
   cluster_name     = local.cluster_name
   role_name        = "aws-vpc-cni"
   service_accounts = ["kube-system/aws-vpc-cni"]
   policies         = []
-  tags             = local.tags_map
+  tags             = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "aws_vpc_cni" {

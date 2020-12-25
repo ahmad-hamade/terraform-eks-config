@@ -167,13 +167,13 @@ data "aws_iam_policy_document" "alb_ingress" {
 }
 
 module "alb_ingress" {
-  source           = "./modules/eks-iam-role//"
+  source           = "./modules/eks-iam-role-with-oidc//"
   enable           = var.aws_alb_ingress_controller != null
   cluster_name     = local.cluster_name
   role_name        = "alb-ingress"
   service_accounts = ["kube-system/aws-alb-ingress-controller"]
   policies         = [data.aws_iam_policy_document.alb_ingress.json]
-  tags             = local.tags_map
+  tags             = var.tags
 }
 
 resource "helm_release" "alb_ingress" {

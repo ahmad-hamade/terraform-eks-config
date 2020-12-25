@@ -6,11 +6,4 @@ locals {
   charts_bitnami_repo    = "https://charts.bitnami.com/bitnami"
   charts_aws_repo        = "https://aws.github.io/eks-charts"
   charts_autoscaler_repo = "https://kubernetes.github.io/autoscaler"
-
-  tags_map = merge(
-    {
-      ManagedBy = "EKS-Config-Module"
-    },
-    var.tags,
-  )
 }

@@ -17,13 +17,13 @@ data "aws_iam_policy_document" "cluster_autoscaler" {
 }
 
 module "cluster_autoscaler" {
-  source           = "./modules/eks-iam-role//"
+  source           = "./modules/eks-iam-role-with-oidc//"
   enable           = var.cluster_autoscaler != null
   cluster_name     = local.cluster_name
   role_name        = "cluster-autoscaler"
   service_accounts = ["kube-system/cluster-autoscaler"]
   policies         = [data.aws_iam_policy_document.cluster_autoscaler.json]
-  tags             = local.tags_map
+  tags             = var.tags
 }
 
 resource "helm_release" "cluster_autoscaler" {

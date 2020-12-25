@@ -27,13 +27,13 @@ data "aws_iam_policy_document" "aws_fluent_bit" {
 }
 
 module "aws_fluent_bit" {
-  source           = "./modules/eks-iam-role//"
+  source           = "./modules/eks-iam-role-with-oidc//"
   enable           = var.aws_fluent_bit != null
   cluster_name     = local.cluster_name
   role_name        = "aws-fluent-bit"
   service_accounts = ["kube-system/aws-fluent-bit"]
   policies         = length(data.aws_iam_policy_document.aws_fluent_bit) != 0 ? data.aws_iam_policy_document.aws_fluent_bit.*.json : []
-  tags             = local.tags_map
+  tags             = var.tags
 }
 
 resource "helm_release" "aws_fluent_bit" {
