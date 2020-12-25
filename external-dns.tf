@@ -28,13 +28,13 @@ data "aws_iam_policy_document" "external_dns" {
 }
 
 module "external_dns" {
-  source           = "./modules/eks-iam-role//"
+  source           = "./modules/eks-iam-role-with-oidc//"
   enable           = var.external_dns != null
   cluster_name     = local.cluster_name
   role_name        = "external-dns"
   service_accounts = ["kube-system/external-dns"]
   policies         = length(data.aws_iam_policy_document.external_dns) != 0 ? data.aws_iam_policy_document.external_dns.*.json : []
-  tags             = local.tags_map
+  tags             = var.tags
 }
 
 resource "helm_release" "external_dns" {

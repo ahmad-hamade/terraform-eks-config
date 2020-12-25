@@ -1,6 +1,7 @@
 variable "enable" {
   type        = bool
   description = "Enable/Disable resources creation"
+  default     = true
 }
 
 variable "cluster_name" {
@@ -20,7 +21,7 @@ variable "policies" {
 
 variable "service_accounts" {
   type        = list(string)
-  description = "Array of Kubernetes service accounts (in the format namespace/serviceaccount) that are trusted to assume this role"
+  description = "List of Kubernetes service accounts (in the format namespace/serviceaccount) that are trusted to assume this role"
 }
 
 variable "tags" {
