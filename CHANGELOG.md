@@ -5,17 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.0.0...master)
+## [v3.1.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.0.0...v3.1.0) - (2020 December 26)
 
 * Rename submodule `eks-iam-role` to `eks-iam-role-with-oidc`
 * Add required terraform and providers versions in submodul `eks-iam-role`
 * Add README file to `eks-iam-role` submodul
 * Remove the default tag key `ManagedBy` from the module
-
-<!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
-<!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
-<!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->
-<!--CHANGELOG: For more information please read https://keepachangelog.com/en/1.0.0/ -->
 
 ## [v3.0.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/v2.0.0...v3.0.0) - (2020 December 24)
 
