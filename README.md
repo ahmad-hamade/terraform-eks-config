@@ -2,20 +2,17 @@
 
 ![Code Check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/code-check/badge.svg)
 ![Security Check](https://github.com/ahmad-hamade/terraform-eks-config/workflows/security-check/badge.svg)
-![Terraform](https://img.shields.io/badge/Terraform->=v0.12.6-blue.svg)
 ![Latest Release](https://img.shields.io/github/release/ahmad-hamade/terraform-eks-config.svg)
 
 - [EKS Services](#eks-services)
   - [Overview](#overview)
   - [Compatibility](#compatibility)
-  - [Dependencies](#dependencies)
   - [Usage](#usage)
   - [Deprecated services](#deprecated-services)
   - [Requirements](#requirements)
   - [Providers](#providers)
   - [Inputs](#inputs)
   - [Outputs](#outputs)
-  - [Authors](#authors)
   - [License](#license)
 
 ## Overview
@@ -45,13 +42,9 @@ This module made the following services setup in EKS easier and adjustable:
 
 ## Compatibility
 
-This module can be used with Terraform `0.12.x` and `0.13.x`.
-
-All examples mentioned in the usage section are tested with Kubernetes EKS 1.17.
-
-## Dependencies
-
-This module expects an EKS cluster created and its up and running.
+- This module can be used with Terraform `0.12.x` and `0.13.x`
+- All examples mentioned in the usage section are tested with Kubernetes EKS 1.17
+- EKS cluster is configured with OIDC identity provider
 
 ## Usage
 
@@ -59,17 +52,20 @@ Import the module and retrieve it with `terraform get`:
 
 ```terraform
 module "eks_config" {
-  source = "git@github.com:ahmad-hamade/terraform-eks-config.git//.?ref=TAG"
+  source  = "ahmad-hamade/config/eks"
+  version = "<TAG>"
 
-  cluster_name = module.eks_control_plane.tags_map["ClusterName"]
+  cluster_name = module.eks_control_plane.id
 
   # Make sure to delete the existing VPC CNI resources by running the below command before installing this service:
   # kubectl delete -f https://raw.githubusercontent.com/aws/amazon-vpc-cni-k8s/release-1.6/config/v1.6/aws-k8s-cni.yaml
   aws_vpc_cni = {
-    version    = "1.1.1"
+    version    = "1.1.2"
     extra_sets = {
       "init.image.tag" : "v1.7.5"
       "image.tag" : "v1.7.5"
+      "env.AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG" : "true"
+      "env.ENI_CONFIG_LABEL_DEF" : "failure-domain.beta.kubernetes.io/zone"
     }
   }
 
@@ -81,9 +77,9 @@ module "eks_config" {
   }
 
   aws_node_termination_handler = {
-    version = "0.13.2"
+    version = "0.13.3"
     extra_sets = {
-      "image.tag" : "v1.11.2"
+      "image.tag" : "v1.12.0"
     }
   }
 
@@ -91,10 +87,12 @@ module "eks_config" {
     version = "1.8.3"
     extra_sets = {
       "image.repository" : "k8s.gcr.io/node-problem-detector/node-problem-detector"
-      "image.tag" : "v0.8.5"
+      "image.tag" : "v0.8.6"
     }
   }
 
+  # Make sure to delete the existing EFS CNI resources by running the below command before installing this service:
+  # kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/master/deploy/kubernetes/base/csidriver.yaml
   aws_efs_csi_driver = {
     version = "0.1.0"
     extra_sets = {
@@ -103,10 +101,10 @@ module "eks_config" {
   }
 
   aws_fluent_bit = {
-    version             = "0.1.5"
+    version             = "0.1.6"
     kinesis_stream_name = module.logging_kinesis.kinesis_stream_name
     extra_sets = {
-      "image.tag" : "2.10.0"
+      "image.tag" : "2.10.1"
     }
   }
 
@@ -119,7 +117,7 @@ module "eks_config" {
   }
 
   kube_state_metrics = {
-    version = "2.9.4"
+    version = "2.12.0"
     extra_sets = {
       "image.tag" : "v1.9.7"
     }
@@ -142,7 +140,7 @@ module "eks_config" {
   }
 
   cluster_autoscaler = {
-    version = "9.3.0"
+    version = "9.4.0"
     extra_sets = {
       "image.repository" : "k8s.gcr.io/autoscaling/cluster-autoscaler"
       "image.tag" : "v1.17.3"
@@ -185,7 +183,7 @@ efs_provisioner = {
 | terraform | >= 0.12.0 |
 | aws | >= 2.70 |
 | helm | >= 2.0 |
-| kubernetes | >= 1.11 |
+| kubernetes | >= 2.0 |
 
 ## Providers
 
@@ -193,7 +191,7 @@ efs_provisioner = {
 |------|---------|
 | aws | >= 2.70 |
 | helm | >= 2.0 |
-| kubernetes | >= 1.11 |
+| kubernetes | >= 2.0 |
 
 ## Inputs
 
@@ -235,10 +233,6 @@ efs_provisioner = {
 | node\_problem\_detector | Nod Problem Detector |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-## Authors
-
-This module is maintained by [Ahmad Hamade](https://github.com/ahmad-hamade) with help from [these awesome contributors](https://github.com/ahmad-hamade/terraform-eks-config/graphs/contributors).
 
 ## License
 
