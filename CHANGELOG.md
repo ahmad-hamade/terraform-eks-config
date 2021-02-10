@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.1.0...master)
 
+* Removed deprecated `load_config_file` attribute from helm provider
+* Migrate `kube-state-metrics` chart repository
+* Updated `README.md` file
+
 <!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
-<!--CHANGELOG: DO NOT REMOVE OTHER ENTRIES! -->
-<!--CHANGELOG: When releasing, the release engineer will validate your PR and update the version number accordingly. -->
 <!--CHANGELOG: For more information please read https://keepachangelog.com/en/1.0.0/ -->
 
 ## [v3.1.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.0.0...v3.1.0) - (2020 December 26)
