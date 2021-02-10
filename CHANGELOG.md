@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased](https://github.com/ahmad-hamade/terraform-eks-config/compare/v4.0.0...master)
+
+<!--CHANGELOG: Please add all relevant changes here, making sure your change is on top of others. -->
+<!--CHANGELOG: For more information please read https://keepachangelog.com/en/1.0.0/ -->
+
 ## [v4.0.0](https://github.com/ahmad-hamade/terraform-eks-config/compare/v3.1.0...v4.0.0) - (2021 February 10)
 
 * Removed deprecated `load_config_file` attribute from helm provider
