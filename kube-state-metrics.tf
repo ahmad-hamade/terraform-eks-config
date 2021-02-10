@@ -1,7 +1,7 @@
 resource "helm_release" "kube_state_metrics" {
   count         = var.kube_state_metrics != null ? 1 : 0
   name          = "kube-state-metrics"
-  repository    = local.charts_stable_repo
+  repository    = "https://kubernetes.github.io/kube-state-metrics"
   chart         = "kube-state-metrics"
   namespace     = "kube-system"
   version       = var.kube_state_metrics.version
